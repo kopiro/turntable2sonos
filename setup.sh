@@ -18,6 +18,7 @@ sudo cp turntable2sonos.cfg /home/turntable2sonos/.turntable2sonos.cfg
 
 # Fix permissions
 sudo chown -R turntable2sonos:turntable2sonos /home/turntable2sonos
+sudo chmod +x turntable2sonos.sh
 
 # Copy the service
 sudo cp turntable2sonos.service /etc/systemd/system/turntable2sonos.service
