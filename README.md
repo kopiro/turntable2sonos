@@ -4,6 +4,8 @@ Streams your turntable to Sonos device, plug&play.
 
 Put your LP in the player, press play, and music is going to be streamed automatically to your Sonos device.
 
+![Turntable2Sonos](turntable2sonos.jpg)
+
 ## Hardware prerequisites
 
 - A Raspberry PI or equivalent; I recommend a version 3 minimum
