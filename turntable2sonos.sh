@@ -2,8 +2,7 @@
 
 radio_url="http://$(hostname).local/stream.mp3"
 
-# Read the config from /etc/turntable2sonos.cfg
-source /etc/turntable2sonos.cfg
+source ~/.turntable2sonos.cfg
 
 echo "Sonos Device Name: $sonos_device_name"
 echo "ALSA Device: $alsa_device"

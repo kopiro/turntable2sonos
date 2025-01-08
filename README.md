@@ -22,6 +22,10 @@ cd turntable2sonos
 source setup.sh
 ```
 
+## Configuration
+
+The configuration file is in `/home/turntable2sonos/.turntable2sonos.cfg` and it should be pretty explanatory.
+
 ### Upgrade
 
 ```

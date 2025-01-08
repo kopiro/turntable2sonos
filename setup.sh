@@ -11,14 +11,13 @@ sudo cp ./conf/icecast.xml /etc/icecast2/icecast.xml
 sudo cp ./conf/asoundrc /home/turntable2sonos/.asoundrc
 
 # Install soco-cli as "turntable2sonos" user
-sudo -u turntable2sonos pip3 install soco-cli
+sudo -u turntable2sonos pip3 install -U --break-system-packages soco-cli
 
 # Create the configuration file
-sudo cp turntable2sonos.cfg /etc/turntable2sonos.cfg
+sudo cp turntable2sonos.cfg /home/turntable2sonos/.turntable2sonos.cfg
 
 # Fix permissions
 sudo chown -R turntable2sonos:turntable2sonos /home/turntable2sonos
-sudo chown turntable2sonos:turntable2sonos /etc/turntable2sonos.cfg
 
 # Copy the service
 sudo cp turntable2sonos.service /etc/systemd/system/turntable2sonos.service
