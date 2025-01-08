@@ -1,4 +1,4 @@
-pcm.turntable_rca_usb {
+pcm.turntable_usb {
     type dsnoop
     ipc_key 1024
     slave {
@@ -8,7 +8,7 @@ pcm.turntable_rca_usb {
     }
 }
 
-ctl.turntable_rca_usb {
+ctl.turntable_usb {
     type hw
     card 1
 }
