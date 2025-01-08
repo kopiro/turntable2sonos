@@ -14,9 +14,10 @@ Put your LP in the player, press play, and music is going to be streamed automat
 
 ```
 cd /usr/share
-git clone https://github.com/kopiro/turntable2sonos
+apt -y install git
+git clone https://github.com/kopiro/turntable2sonos.git
 cd turntable2sonos
-sudo ./setup.sh
+source setup.sh
 ```
 
 ### Upgrade
@@ -25,5 +26,5 @@ sudo ./setup.sh
 cd /usr/share/turntable
 git fetch origin
 git reset --hard origin/main
-sudo ./setup.sh
+source setup.sh
 ```

@@ -1,9 +1,6 @@
 #!/bin/bash
-sudo apt -y install darkice icecast2 darkice sox bc
-pip install -U soco-cli
 
-# Create the configuration file
-sudo cp turntable2sonos.cfg /etc/turntable2sonos.cfg
+sudo apt -y install darkice icecast2 darkice sox bc python3-pip
 
 # Create user and group (with home)
 sudo useradd -m -s /bin/bash turntable2sonos
@@ -13,12 +10,15 @@ sudo cp ./conf/darkice.cfg /etc/darkice.cfg
 sudo cp ./conf/icecast.xml /etc/icecast2/icecast.xml
 sudo cp ./conf/asoundrc /home/turntable2sonos/.asoundrc
 
-# Copy the script
-sudo cp turntable2sonos.sh /usr/local/bin/turntable2sonos
+# Install soco-cli as "turntable2sonos" user
+sudo -u turntable2sonos pip3 install soco-cli
+
+# Create the configuration file
+sudo cp turntable2sonos.cfg /etc/turntable2sonos.cfg
 
 # Fix permissions
 sudo chown -R turntable2sonos:turntable2sonos /home/turntable2sonos
-sudo chown turntable2sonos /etc/turntable2sonos.cfg /usr/share/turntable2sonos/turntable2sonos.sh
+sudo chown turntable2sonos:turntable2sonos /etc/turntable2sonos.cfg
 
 # Copy the service
 sudo cp turntable2sonos.service /etc/systemd/system/turntable2sonos.service
