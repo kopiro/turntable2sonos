@@ -4,6 +4,7 @@ sudo apt -y install darkice icecast2 darkice sox bc python3-pip
 
 # Create user and group (with home)
 sudo useradd -m -s /bin/bash turntable2sonos
+sudo usermod -aG audio turntable2sonos
 
 # Create support config file
 sudo cp ./conf/darkice.cfg /etc/darkice.cfg

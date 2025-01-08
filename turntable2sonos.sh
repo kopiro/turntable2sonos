@@ -1,6 +1,9 @@
 #!/bin/bash
 
-radio_url="http://$(hostname).local/stream.mp3"
+if [ ! -f ~/.turntable2sonos.cfg ]; then
+    echo "Configuration file not found. Please create a configuration file at ~/.turntable2sonos.cfg"
+    exit 1
+fi
 
 source ~/.turntable2sonos.cfg
 
@@ -10,6 +13,9 @@ echo "Debounce Interval: $debounce_interval_sec"
 echo "Check Interval: $check_interval_sec"
 echo "Audio Threshold: $audio_threshold_db"
 echo "Radio URL: $radio_url"
+
+radio_url="http://$(hostname).local/stream.mp3"
+
 
 # Function to log messages to stdout
 log_message() {
