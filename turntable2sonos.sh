@@ -7,7 +7,7 @@ fi
 
 source /etc/turntable2sonos.cfg || { echo "Failed to source configuration file"; exit 1; }
 
-radio_url="http://$(hostname).local/stream.mp3"
+radio_url="http://$(hostname).local:8000/stream.mp3"
 
 echo "Sonos Device Name: $sonos_device_name"
 echo "ALSA Device: $alsa_device"
