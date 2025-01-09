@@ -26,7 +26,6 @@ log_message "Starting audio listener script on ALSA device ${alsa_device}"
 
 # Initialize the last triggered time and silence start time
 last_triggered_timestamp=0
-silence_start_timestamp=0
 
 while true; do
     # Capture a short audio sample from the specified ALSA device and get the RMS amplitude
@@ -56,19 +55,6 @@ while true; do
             last_triggered_timestamp=$current_time
         else
             log_message "Sound detected but within debounce interval. Ignoring."
-        fi
-        silence_start_timestamp=0
-    else
-        if [ "$silence_start_timestamp" = "0" ]; then
-            silence_start_timestamp=$current_time
-        elif [ $((current_time - silence_start_timestamp)) -ge 60 ]; then
-            current_state=$(get_input_boolean_state)
-            if [ "$current_state" != "off" ]; then
-                log_message "No sound detected for 60 seconds, resetting source to TV"
-					 sonos "$sonos_device_name" stop
-                sonos "$sonos_device_name" switch_to_tv
-            fi
-            silence_start_timestamp=0
         fi
     fi
 
