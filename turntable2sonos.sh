@@ -5,9 +5,9 @@ if [ ! -f /etc/turntable2sonos.cfg ]; then
     exit 1
 fi
 
-source /etc/turntable2sonos.cfg
+source /etc/turntable2sonos.cfg || { echo "Failed to source configuration file"; exit 1; }
 
-radio_url="http://$(hostname).local/stream.mp3"s
+radio_url="http://$(hostname).local/stream.mp3"
 
 echo "Sonos Device Name: $sonos_device_name"
 echo "ALSA Device: $alsa_device"
@@ -15,9 +15,6 @@ echo "Debounce Interval: $debounce_interval_sec"
 echo "Check Interval: $check_interval_sec"
 echo "Audio Threshold: $audio_threshold_db"
 echo "Radio URL: $radio_url"
-
-
-
 
 # Function to log messages to stdout
 log_message() {
@@ -41,7 +38,7 @@ while true; do
     fi
 
     # Check if RMS amplitude exceeds the threshold
-    exceeds_threshold=$(echo "$rms_amplitude > $audio_treshold_db" | bc -l)
+    exceeds_threshold=$(echo "$rms_amplitude > $audio_threshold_db" | bc -l)
 
     if [[ "$exceeds_threshold" != "1" && "$exceeds_threshold" != "0" ]]; then
         log_message "Unexpected value for exceeds_threshold: '$exceeds_threshold'. Setting to 0."
