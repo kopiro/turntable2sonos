@@ -7,6 +7,8 @@ fi
 
 source /etc/turntable2sonos.cfg
 
+radio_url="http://$(hostname).local/stream.mp3"s
+
 echo "Sonos Device Name: $sonos_device_name"
 echo "ALSA Device: $alsa_device"
 echo "Debounce Interval: $debounce_interval_sec"
@@ -14,7 +16,7 @@ echo "Check Interval: $check_interval_sec"
 echo "Audio Threshold: $audio_threshold_db"
 echo "Radio URL: $radio_url"
 
-radio_url="http://$(hostname).local/stream.mp3"
+
 
 
 # Function to log messages to stdout
