@@ -1,31 +1,30 @@
 #!/bin/bash
 
-sudo apt -y install darkice icecast2 darkice sox bc python3-pip
+# Bail out if not running as root
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
 
-# Create user and group (with home)
-sudo useradd -m -s /bin/bash turntable2sonos
-sudo usermod -aG audio turntable2sonos
+apt -y install darkice icecast2 darkice sox bc python3-pip
 
 # Create support config file
-sudo cp ./conf/darkice.cfg /etc/darkice.cfg
-sudo cp ./conf/icecast.xml /etc/icecast2/icecast.xml
-sudo cp ./conf/asoundrc /home/turntable2sonos/.asoundrc
+cp ./conf/darkice.cfg /etc/darkice.cfg
+cp ./conf/icecast.xml /etc/icecast2/icecast.xml
+cp ./conf/asound.conf /etc/asound.conf
 
-# Install soco-cli as "turntable2sonos" user
-sudo -u turntable2sonos pip3 install -U --break-system-packages soco-cli
+pip3 install -U --break-system-packages soco-cli
 
 # Create the configuration file
-sudo cp turntable2sonos.cfg /home/turntable2sonos/.turntable2sonos.cfg
-
-# Fix permissions
-sudo chown -R turntable2sonos:turntable2sonos /home/turntable2sonos
-sudo chmod +x turntable2sonos.sh
+cp turntable2sonos.cfg /etc/turntable2sonos.cfg
 
 # Copy the service
-sudo cp turntable2sonos.service /etc/systemd/system/turntable2sonos.service
+cp turntable2sonos.service /etc/systemd/system/turntable2sonos.service
 
 # Enable Icecast2 and Darkice
-sudo systemctl daemon-reload
-sudo systemctl enable icecast2
-sudo systemctl enable darkice
-sudo systemctl enable turntable2sonos
+systemctl daemon-reload
+systemctl enable icecast2
+systemctl enable darkice
+systemctl enable turntable2sonos
+
+echo "Setup complete. Please edit /etc/turntable2sonos.cfg to configure the application and REBOOT."

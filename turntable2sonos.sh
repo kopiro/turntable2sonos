@@ -1,11 +1,11 @@
 #!/bin/bash
 
-if [ ! -f ~/.turntable2sonos.cfg ]; then
-    echo "Configuration file not found. Please create a configuration file at ~/.turntable2sonos.cfg"
+if [ ! -f /etc/turntable2sonos.cfg ]; then
+    echo "Configuration file not found. Please create a configuration file at /etc/turntable2sonos.cfg"
     exit 1
 fi
 
-source ~/.turntable2sonos.cfg
+source /etc/turntable2sonos.cfg
 
 echo "Sonos Device Name: $sonos_device_name"
 echo "ALSA Device: $alsa_device"

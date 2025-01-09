@@ -5,8 +5,7 @@ After=network.target
 [Service]
 ExecStart=/usr/share/turntable2sonos/turntable2sonos.sh
 Restart=always
-User=turntable2sonos
-Group=turntable2sonos
+User=root
 RestartSec=5
 
 [Install]
