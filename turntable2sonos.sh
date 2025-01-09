@@ -50,7 +50,7 @@ while true; do
     if [ "$exceeds_threshold" = "1" ]; then
         if [ $((current_time - last_triggered_timestamp)) -ge "$debounce_interval_sec" ]; then
             log_message "Sound detected (RMS: $rms_amplitude), triggering Sonos to play radio"
-            sonos "$sonos_device_name" play_media "$radio_url"
+            sonos "$sonos_device_name" play_uri "$radio_url"
             last_triggered_timestamp=$current_time
         else
             log_message "Sound detected but within debounce interval. Ignoring."
