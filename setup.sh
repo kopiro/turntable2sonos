@@ -27,4 +27,5 @@ systemctl enable icecast2
 systemctl enable darkice
 systemctl enable turntable2sonos
 
-echo "Setup complete. Please edit /etc/turntable2sonos.cfg to configure the application and REBOOT."
+echo "Setup complete. Please edit /etc/turntable2sonos.cfg to configure the application."
+echo "To start the service now, run 'systemctl start turntable2sonos' and check the logs with 'journalctl -fu turntable2sonos'"
