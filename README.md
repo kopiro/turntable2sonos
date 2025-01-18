@@ -21,4 +21,15 @@ dpkg -i turntable2sonos-1.0.0.deb
 
 ## Configuration
 
-The configuration file is in `/etc/turntable2sonos.cfg` and it should be pretty explanatory.
+The configuration files live `/etc/turntable2sonos`; the only file you should change is `/etc/turntable2sonos/turntable2sonos.cfg`.
+
+Additional configurations are:
+
+- IceCast server: `/etc/turntable2sonos/icecast.xml`
+- DarkIce: `/etc/turntable2sonos/darkice.cfg`
+- ALSA: `/etc/alsa/conf.d/turntable2sonos.conf`
+
+## Defaults
+
+- The default port for the Icast server is `8000`
+- Icast user credentials are `turntable:turntable`, while admin credentials are `root:toor`
