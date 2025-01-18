@@ -15,22 +15,10 @@ Put your LP in the player, press play, and music is going to be streamed automat
 ## Installation
 
 ```
-apt -y install git
-cd /usr/share
-git clone https://github.com/kopiro/turntable2sonos.git
-cd turntable2sonos
-source setup.sh
+wget https://github.com/kopiro/turntable2sonos/raw/refs/heads/main/build/turntable2sonos-1.0.0.deb
+dpkg -i turntable2sonos-1.0.0.deb
 ```
 
 ## Configuration
 
 The configuration file is in `/etc/turntable2sonos.cfg` and it should be pretty explanatory.
-
-### Upgrade
-
-```
-cd /usr/share/turntable
-git fetch origin
-git reset --hard origin/main
-source setup.sh
-```
