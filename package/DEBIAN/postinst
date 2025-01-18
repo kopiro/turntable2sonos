@@ -4,11 +4,14 @@ set -e
 
 # Create a system user for the script
 if ! id "turntable2sonos" >/dev/null 2>&1; then
-    useradd -r -s /bin/false turntable2sonos
+    useradd -m turntable2sonos
     # Add user to group audio
     usermod -a -G audio turntable2sonos
     echo "User 'turntable2sonos' created"
 fi
+
+# Install soco-cli
+su - turntable2sonos -c 'pip3 install soco-cli --break-system-packages'
 
 # Make sure /dev/snd is accessible
 chmod a+rw /dev/snd/*
