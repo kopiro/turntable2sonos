@@ -24,17 +24,10 @@ jobs:
 
     # Build the Docker image
     - name: Build the package
-      run: |
-        docker build -t builder .
-
-    # Run the container to generate the .deb package
-    - name: Generate .deb package
-      run: |
-        mkdir -p ./build
-        docker run --rm -v "${{ github.workspace }}/build:/workdir/build" builder
+      run: ./build.sh
 
     # Upload the package as an artifact
-    - name: Upload .deb package
+    - name: Upload the package
       uses: actions/upload-artifact@v3
       with:
         name: turntable2sonos
