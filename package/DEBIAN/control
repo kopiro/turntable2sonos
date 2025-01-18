@@ -1,0 +1,8 @@
+Package: turntable2sonos
+Version: 1.0
+Section: utils
+Priority: optional
+Architecture: all
+Depends: sox, bc, darkice, icecast2, alsa-utils
+Maintainer: De Stefano Flavio <destefano.flavio@gmail.com>
+Description: Streams your turntable to Sonos device, plug and play.

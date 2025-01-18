@@ -1,0 +1,41 @@
+name: Build and Upload .deb Package
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-package:
+    name: Build .deb Package
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Set up Docker
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v2
+
+    # Build the Docker image
+    - name: Build the package
+      run: |
+        docker build -t builder .
+
+    # Run the container to generate the .deb package
+    - name: Generate .deb package
+      run: |
+        mkdir -p ./build
+        docker run --rm -v "${{ github.workspace }}/build:/workdir/build" builder
+
+    # Upload the package as an artifact
+    - name: Upload .deb package
+      uses: actions/upload-artifact@v3
+      with:
+        name: turntable2sonos
+        path: ./build/*.deb

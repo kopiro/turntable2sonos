@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -e
+
+# Create a system user for the script
+if ! id "turntable2sonos" >/dev/null 2>&1; then
+    useradd -r -s /bin/false turntable2sonos
+    # Add user to group audio
+    usermod -a -G audio turntable2sonos
+    echo "User 'turntable2sonos' created"
+fi
+
+# Make sure /dev/snd is accessible
+chmod a+rw /dev/snd/*
+
+# Create log dirs
+mkdir -p /var/log/turntable2sonos
+
+# Ensure permissions for directories/files
+chown turntable2sonos:turntable2sonos /usr/bin/turntable2sonos
+chown -R turntable2sonos:turntable2sonos /etc/turntable2sonos
+chown -R turntable2sonos:turntable2sonos /var/log/turntable2sonos
+
+# Reload systemd to register the service
+systemctl daemon-reload
+
+# Enable and start the service
+systemctl enable turntable2sonos.service
+systemctl start turntable2sonos.service
