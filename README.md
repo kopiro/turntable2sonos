@@ -16,7 +16,7 @@ Put your LP in the player, press play, and music is going to be streamed automat
 
 ```
 wget https://github.com/kopiro/turntable2sonos/raw/refs/heads/main/build/turntable2sonos-1.0.0.deb
-sudo apt install ./turntable2sonos-*.deb
+sudo apt install -f ./turntable2sonos-*.deb
 ```
 
 ## Configuration
@@ -33,3 +33,17 @@ Additional configurations are:
 
 - The default port for the Icast server is `8000`
 - Icast user credentials are `turntable:turntable`, while admin credentials are `root:toor`
+
+## Maintanance
+
+Restart the service:
+
+```sh
+sudo systemctl restart turntable2sonos
+```
+
+View the logs
+
+```sh
+journalctl -fu turntable2sonos
+```
