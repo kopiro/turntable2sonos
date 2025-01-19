@@ -16,7 +16,7 @@ Put your LP in the player, press play, and music is going to be streamed automat
 
 ```
 wget https://github.com/kopiro/turntable2sonos/raw/refs/heads/main/build/turntable2sonos-1.0.0.deb
-dpkg -i turntable2sonos-1.0.0.deb
+sudo apt install ./turntable2sonos-*.deb
 ```
 
 ## Configuration
