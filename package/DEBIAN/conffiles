@@ -1,0 +1,4 @@
+/etc/turntable2sonos/turntable2sonos.cfg
+/etc/turntable2sonos/darkice.cfg
+/etc/turntable2sonos/icecast.xml
+/etc/alsa/conf.d/turntable2sonos.conf
