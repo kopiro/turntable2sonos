@@ -5,16 +5,11 @@ set -e
 # Create a system user for the script
 if ! id "turntable2sonos" >/dev/null 2>&1; then
     useradd -m turntable2sonos
-    # Add user to group audio
-    usermod -a -G audio turntable2sonos
     echo "User 'turntable2sonos' created"
 fi
 
 # Install soco-cli
-su - turntable2sonos -c 'pip3 install soco-cli --break-system-packages'
-
-# Make sure /dev/snd is accessible
-chmod a+rw /dev/snd/*
+pip install soco-cli --break-system-packages
 
 # Create log dirs
 mkdir -p /var/log/turntable2sonos
@@ -28,5 +23,5 @@ chown -R turntable2sonos:turntable2sonos /var/log/turntable2sonos
 systemctl daemon-reload
 
 # Enable and start the service
-systemctl enable turntable2sonos.service
-systemctl start turntable2sonos.service
+systemctl enable turntable2sonos
+systemctl start turntable2sonos

@@ -1,19 +1,22 @@
 #!/bin/bash
 
-if [ ! -f /etc/turntable2sonos.cfg ]; then
-    echo "Configuration file not found. Please create a configuration file at /etc/turntable2sonos.cfg"
+CONFIG_FILE="/etc/turntable2sonos/turntable2sonos.cfg"
+
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "Configuration file not found. Please create a configuration file at "$CONFIG_FILE""
     exit 1
 fi
 
-source /etc/turntable2sonos.cfg
+source "$CONFIG_FILE"
 
 radio_url="http://$(hostname).local:8000/stream.mp3"
+echo "Radio URL: $radio_url"
+
 echo "Sonos Device Name: $sonos_device_name"
 echo "ALSA Device: $alsa_device"
 echo "Debounce Interval: $debounce_interval_sec"
 echo "Check Interval: $check_interval_sec"
 echo "Audio Threshold: $audio_threshold_db"
-echo "Radio URL: $radio_url"
 
 # Check if the ALSA device exists
 if ! aplay -L | grep -q "$alsa_device"; then
@@ -69,7 +72,7 @@ while true; do
     if [ "$exceeds_threshold" = "1" ]; then
         if [ $((current_time - last_triggered_timestamp)) -ge "$debounce_interval_sec" ]; then
             echo "Sound detected (RMS: $rms_amplitude), triggering Sonos to play radio"
-            ~/.local/bin/sonos "$sonos_device_name" play_uri "$radio_url"
+            sonos "$sonos_device_name" play_uri "$radio_url"
             last_triggered_timestamp=$current_time
         else
             echo "Sound detected but within debounce interval. Ignoring."
