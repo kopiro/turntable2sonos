@@ -6,6 +6,10 @@ Put your LP in the player, press play, and music is going to be streamed automat
 
 ![Turntable2Sonos](turntable2sonos.jpg)
 
+This project is required for Sonos devices that don't have AUX input or that, for any reason, are distant from the LP player and you want to stream wirelessly.
+
+Currently, several Sonos products lack AUX input, like the Ones, all the soundbars (Beam + ARC + ARC Ultra), Roam or Move.
+
 ## Hardware prerequisites
 
 - A Raspberry PI or equivalent (something small you can put closr to the Turntable); I recommend a version 3 minimum
