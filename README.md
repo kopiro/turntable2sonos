@@ -1,8 +1,6 @@
 # Turntable2Sonos
 
-Streams your turntable to Sonos device, plug&play.
-
-Put your LP in the player, press play, and music is going to be streamed automatically to your Sonos device.
+Streams your turntable to Sonos device, plug&play. Place your LP on the player, press play, and the music will automatically stream in your room.
 
 ![Turntable2Sonos](image.jpg)
 
