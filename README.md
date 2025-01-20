@@ -4,7 +4,7 @@ Streams your turntable to Sonos device, plug&play.
 
 Put your LP in the player, press play, and music is going to be streamed automatically to your Sonos device.
 
-![Turntable2Sonos](turntable2sonos.jpg)
+![Turntable2Sonos](image.jpg)
 
 This project is required for Sonos devices that don't have AUX input or that, for any reason, are distant from the LP player and you want to stream wirelessly.
 
