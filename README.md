@@ -64,7 +64,7 @@ The process begins with *Darkice*, a software application that captures audio in
 
 This audio source could be a microphone, mixer, or any other device providing a live audio feed. Darkice then encodes this audio in real time using a specified codec (e.g., MP3, AAC, etc.) and streams it to an Icecast server. 
 
-Icecast acts as a streaming server, hosting the audio stream and making it accessible over a network via a specific URL (e.g., http://192.168.X.X:8000/stream).
+Icecast acts as a streaming server, hosting the audio stream and making it accessible over a network via a specific URL (e.g., http://raspberrypi.local:8000/stream).
 
 To integrate this with Sonos speakers, a multicast command is sent locally over the network. This command instructs the Sonos system to tune into the Icecast server’s audio stream. 
 
