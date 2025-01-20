@@ -11,17 +11,18 @@ fi
 # Install soco-cli
 pip install soco-cli --break-system-packages
 
+# Spit out the Sonos devices
+sonos-discover
+
 # Create log dirs
 mkdir -p /var/log/turntable2sonos
 
 # Ensure permissions for directories/files
 chown turntable2sonos:turntable2sonos /usr/bin/turntable2sonos
+chmod +x /usr/bin/turntable2sonos
+
 chown -R turntable2sonos:turntable2sonos /etc/turntable2sonos
 chown -R turntable2sonos:turntable2sonos /var/log/turntable2sonos
 
 # Reload systemd to register the service
 systemctl daemon-reload
-
-# Enable and start the service
-systemctl enable turntable2sonos
-systemctl start turntable2sonos

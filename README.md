@@ -28,6 +28,8 @@ sudo dpkg -i turntable2sonos-*.deb
 sudo apt-get -f install
 ```
 
+During the installation process, you'll see the name of your Sonos devices in the network; annotate the one you want to use.
+
 Modify the configuration file `/etc/turntable2sonos/turntable2sonos.cfg`, then start the service (and it will also start at boot) with `sudo systemctl enable --now turntable2sonos`
 
 ## Configurations
